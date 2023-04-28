@@ -31,3 +31,18 @@ def create_campaign(data):
     make_request = requests.post(url=create_url, data=params, headers=headers)
     campaign_json = make_request.json()
     return campaign_json
+
+def create_adgroup(data):
+    create_loc = 'adgroup/create/'
+    create_url = urljoin(BASE_URL, create_loc)
+    headers = {
+        'Access-Token': '23d19996b998769044fca1251224c64e989675cb'
+    }
+    params = {
+        'advertiser_id': data['advertiser_id'],
+        'campaign_id': data['campaign_id'],
+        'adgroup_name': data['adgroup_name'],
+        'promotion_type': data['promotion_type'],
+        'placement': list(data['placement']),
+        # them params de tao adgroup
+    }

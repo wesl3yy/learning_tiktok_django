@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from viaacount.models import ViaAccount
 from tiktok.utils import create_campaign, convert_response
-from tiktok.models import TiktokCampaign
+from tiktok.models import TiktokCampaign, TiktokAdGroup
 
 
 class CreateCampaignSerializer(serializers.ModelSerializer):
@@ -28,4 +28,10 @@ class CreateCampaignSerializer(serializers.ModelSerializer):
 
 
 class CreateAdGroupSerializer(serializers.ModelSerializer):
-    pass
+
+    class Meta:
+        model = TiktokAdGroup
+        exclude = ('campaign_id',)
+
+    def create(self, validated_data):
+        pass
